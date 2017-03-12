@@ -90,4 +90,55 @@ while (y < size.height) {
 view.layer.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
 UIGraphicsEndImageContext()
 
+let bodyLabel = UILabel(frame: CGRect(x: logoWidth/2, y: logoHeight/2, width: 730, height: 500))
+bodyLabel.textColor = UIColor.gray
+bodyLabel.backgroundColor = UIColor.white
+bodyLabel.numberOfLines = 0
+bodyLabel.textAlignment = .center
+bodyLabel.lineBreakMode = .byWordWrapping
+bodyLabel.text = "Technology alone is not enough. \n Technology must intersect with the liberal arts and the humanities, to create new ideas and experiences that push society forward. This summer we bring together thousands of brilliant minds representing many diverse perspectives, passions, and talents to help us change the world."
+bodyLabel.font = UIFont.systemFont(ofSize: 35)
+bodyLabel.center = view.center
+bodyLabel.center.y = logoHeight/2+50
+
+let welcomeLabel = UILabel(frame: CGRect(x: logoWidth/2, y: 3*logoHeight/4, width: 636, height: 50))
+welcomeLabel.textColor = UIColor.black
+welcomeLabel.backgroundColor = UIColor.white
+welcomeLabel.numberOfLines = 0
+welcomeLabel.textAlignment = .center
+welcomeLabel.lineBreakMode = .byWordWrapping
+welcomeLabel.text = "Welcome to"
+welcomeLabel.font = UIFont.systemFont(ofSize: 40)
+welcomeLabel.center = view.center
+welcomeLabel.center.y = 6*logoHeight/8-85
+
+let titleLabel = UILabel(frame: CGRect(x: logoWidth/2, y: 3*logoHeight/4, width: 636, height: 70))
+titleLabel.textColor = UIColor.black
+titleLabel.backgroundColor = UIColor.white
+titleLabel.numberOfLines = 0
+titleLabel.textAlignment = .center
+titleLabel.lineBreakMode = .byWordWrapping
+titleLabel.text = " WWDC17"
+titleLabel.font = UIFont.boldSystemFont(ofSize: 75)
+titleLabel.center = view.center
+titleLabel.center.y = 6*logoHeight/8
+
+let locationLabel = UILabel(frame: CGRect(x: logoWidth/2, y: 3*logoHeight/4, width: 636, height: 50))
+locationLabel.textColor = UIColor.black
+locationLabel.backgroundColor = UIColor.white
+locationLabel.numberOfLines = 0
+locationLabel.textAlignment = .center
+locationLabel.lineBreakMode = .byWordWrapping
+locationLabel.text = "San Jose, CA, June 5-9"
+locationLabel.font = UIFont.systemFont(ofSize: 40)
+locationLabel.center = view.center
+locationLabel.center.y = 6*logoHeight/8+75
+
+
+view.addSubview(bodyLabel)
+view.addSubview(welcomeLabel)
+view.addSubview(titleLabel)
+view.addSubview(locationLabel)
+
 let preview = view
+ 
