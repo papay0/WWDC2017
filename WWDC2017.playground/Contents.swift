@@ -38,6 +38,11 @@ let layer20 = UIImage(named: "Layer 20.png")!
 let layer21 = UIImage(named: "Layer 21.png")!
 let images = [layer1, layer2, layer3, layer4, layer5, layer6, layer7, layer8, layer9, layer10, layer11, layer12, layer13, layer14, layer15, layer16, layer17, layer18, layer19, layer20, layer21]
 
+let bodyText: String = "Technology alone is not enough. \n Technology must intersect with the liberal arts and the humanities, to create new ideas and experiences that push society forward. This summer we bring together thousands of brilliant minds representing many diverse perspectives, passions, and talents to help us change the world."
+let welcomeText: String = "Welcome to"
+let titleText: String = " WWDC17"
+let locationText: String = "San Jose, CA, June 5-9"
+
 
 func isPixelWhite(_ pos: CGPoint) -> Bool {
     let pixel = getPixelColor(pos)
@@ -54,8 +59,22 @@ func getPixelColor(_ pos: CGPoint) -> (r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloa
     return (r: r, g: g, b: b, a: a)
 }
 
-func displayLoading(loading: String) {
-    print("~ " + loading + "% loading")
+func displayLoading(loading: CGFloat) {
+    print("~ " + (NSString(format: "%.01f", loading) as String) + "% loading")
+}
+
+func createLabel(text: String, width: CGFloat, height: CGFloat, yCenter: CGFloat, fontSize: CGFloat, color: UIColor) -> UILabel {
+    let label = UILabel(frame: CGRect(x: logoWidth/2, y: logoHeight/2, width: width, height: height))
+    label.textColor = color
+    label.backgroundColor = UIColor.white
+    label.numberOfLines = 0
+    label.textAlignment = .center
+    label.lineBreakMode = .byWordWrapping
+    label.text = text
+    label.font = UIFont.systemFont(ofSize: fontSize)
+    label.center = view.center
+    label.center.y = yCenter
+    return label
 }
 
 var y : CGFloat = 0.0
@@ -67,6 +86,7 @@ var loading : CGFloat = 0.0
 let minimumValue : CGFloat = 5
 var image: UIImage
 var imageView: UIImageView
+var subviews: [UIImageView] = []
 
 while (y < size.height) {
     x = 0.0
@@ -84,55 +104,16 @@ while (y < size.height) {
         maxHeight = max(maxHeight, currentHeight)
     }
     y += maxHeight + minimumValue
-    displayLoading(loading: NSString(format: "%.01f", (y/size.height)*100) as String)
+    displayLoading(loading: (y/size.height)*100)
 }
 
 view.layer.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
 UIGraphicsEndImageContext()
 
-let bodyLabel = UILabel(frame: CGRect(x: logoWidth/2, y: logoHeight/2, width: 730, height: 500))
-bodyLabel.textColor = UIColor.gray
-bodyLabel.backgroundColor = UIColor.white
-bodyLabel.numberOfLines = 0
-bodyLabel.textAlignment = .center
-bodyLabel.lineBreakMode = .byWordWrapping
-bodyLabel.text = "Technology alone is not enough. \n Technology must intersect with the liberal arts and the humanities, to create new ideas and experiences that push society forward. This summer we bring together thousands of brilliant minds representing many diverse perspectives, passions, and talents to help us change the world."
-bodyLabel.font = UIFont.systemFont(ofSize: 35)
-bodyLabel.center = view.center
-bodyLabel.center.y = logoHeight/2+50
-
-let welcomeLabel = UILabel(frame: CGRect(x: logoWidth/2, y: 3*logoHeight/4, width: 636, height: 50))
-welcomeLabel.textColor = UIColor.black
-welcomeLabel.backgroundColor = UIColor.white
-welcomeLabel.numberOfLines = 0
-welcomeLabel.textAlignment = .center
-welcomeLabel.lineBreakMode = .byWordWrapping
-welcomeLabel.text = "Welcome to"
-welcomeLabel.font = UIFont.systemFont(ofSize: 40)
-welcomeLabel.center = view.center
-welcomeLabel.center.y = 6*logoHeight/8-85
-
-let titleLabel = UILabel(frame: CGRect(x: logoWidth/2, y: 3*logoHeight/4, width: 636, height: 70))
-titleLabel.textColor = UIColor.black
-titleLabel.backgroundColor = UIColor.white
-titleLabel.numberOfLines = 0
-titleLabel.textAlignment = .center
-titleLabel.lineBreakMode = .byWordWrapping
-titleLabel.text = " WWDC17"
-titleLabel.font = UIFont.boldSystemFont(ofSize: 75)
-titleLabel.center = view.center
-titleLabel.center.y = 6*logoHeight/8
-
-let locationLabel = UILabel(frame: CGRect(x: logoWidth/2, y: 3*logoHeight/4, width: 636, height: 50))
-locationLabel.textColor = UIColor.black
-locationLabel.backgroundColor = UIColor.white
-locationLabel.numberOfLines = 0
-locationLabel.textAlignment = .center
-locationLabel.lineBreakMode = .byWordWrapping
-locationLabel.text = "San Jose, CA, June 5-9"
-locationLabel.font = UIFont.systemFont(ofSize: 40)
-locationLabel.center = view.center
-locationLabel.center.y = 6*logoHeight/8+75
+let bodyLabel = createLabel(text: bodyText, width: 730, height: 500, yCenter: logoHeight/2+50, fontSize: 35, color: .gray)
+let welcomeLabel = createLabel(text: welcomeText, width: 636, height: 50, yCenter: 6*logoHeight/8-85, fontSize: 40, color: .black)
+let titleLabel = createLabel(text: titleText, width: 636, height: 70, yCenter: 6*logoHeight/8, fontSize: 75, color: .black)
+let locationLabel = createLabel(text: locationText, width: 636, height: 50, yCenter: 6*logoHeight/8+75, fontSize: 40, color: .black)
 
 
 view.addSubview(bodyLabel)
