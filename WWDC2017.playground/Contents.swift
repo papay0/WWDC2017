@@ -112,7 +112,7 @@ UIGraphicsEndImageContext()
 
 let bodyLabel = createLabel(text: bodyText, width: 730, height: 500, yCenter: logoHeight/2+50, fontSize: 35, color: .gray)
 let welcomeLabel = createLabel(text: welcomeText, width: 636, height: 50, yCenter: 6*logoHeight/8-85, fontSize: 40, color: .black)
-let titleLabel = createLabel(text: titleText, width: 636, height: 70, yCenter: 6*logoHeight/8, fontSize: 75, color: .black)
+let titleLabel = createLabel(text: titleText, width: 636, height: 75, yCenter: 6*logoHeight/8, fontSize: 75, color: .black)
 let locationLabel = createLabel(text: locationText, width: 636, height: 50, yCenter: 6*logoHeight/8+75, fontSize: 40, color: .black)
 
 
