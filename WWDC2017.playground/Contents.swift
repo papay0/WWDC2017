@@ -1,7 +1,12 @@
-//: Playground - noun: a place where people can play
-
 import UIKit
 import PlaygroundSupport
+
+/*:
+# Welcome to my WWDC17 submission
+ 
+Please wait until the playground has finished running, and enjoy the preview of the variable **preview**.
+ */
+
 
 let logo = UIImage(named: "Apple.png")!
 let pixelData = logo.cgImage!.dataProvider!.data
@@ -13,7 +18,6 @@ let logoHeight = size.height
 
 let view:UIView = UIView(frame: CGRect(origin: CGPoint.zero, size:size))
 view.backgroundColor = UIColor.white
-UIGraphicsBeginImageContextWithOptions(size, false, 0)
 
 let layer1 = UIImage(named: "Layer 1.png")!
 let layer2 = UIImage(named: "Layer 2.png")!
@@ -107,8 +111,6 @@ while (y < size.height) {
     displayLoading(loading: (y/size.height)*100)
 }
 
-view.layer.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
-UIGraphicsEndImageContext()
 
 let bodyLabel = createLabel(text: bodyText, width: 730, height: 500, yCenter: logoHeight/2+50, fontSize: 35, color: .gray)
 let welcomeLabel = createLabel(text: welcomeText, width: 636, height: 50, yCenter: 6*logoHeight/8-85, fontSize: 40, color: .black)
